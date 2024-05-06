@@ -1,0 +1,30 @@
+task: 'trec'
+dataset_path: trec
+dataset_name: null
+dataset_kwargs: null
+output_type: multiple_choice
+training_split: train
+validation_split: null
+test_split: test
+fewshot_split: train
+
+#process_docs: !function utils.process_docs
+
+doc_to_text: startphrase
+doc_to_target: label
+#doc_to_choice: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+doc_to_choice: "[{{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50' }}]"
+
+
+metric_list:
+  - name: accuracy_coarse
+    metric: acc
+    label: coarse_label
+    aggregation: mean
+    higher_is_better: true
+
+  - name: accuracy_fine
+    metric: acc
+    label: fine_label
+    aggregation: mean
+    higher_is_better: true

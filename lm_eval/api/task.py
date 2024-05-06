@@ -1202,6 +1202,7 @@ class ConfigurableTask(Task):
         elif self.OUTPUT_TYPE == "multiple_choice":
             lls, is_greedy = zip(*results)
 
+
             # retrieve choices in List[str] form, to compute choice lengths, etc.
             choices = self.doc_to_choice(doc)
             completion_len = np.array([float(len(i)) for i in choices])
@@ -1219,6 +1220,7 @@ class ConfigurableTask(Task):
                 lls = lls[::2]
 
             pred = np.argmax(lls)
+            print("PRED IS", pred)
             pred_norm = np.argmax(lls / completion_len)
 
             if self.multiple_input:
